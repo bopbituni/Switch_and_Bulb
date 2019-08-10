@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="button" onclick="turnButtonOn();">TurnOn</button>
+<button type="button" onclick="turnButtonOff();">TurnOff</button>
+<script>
+    let SwitchButton = function (lamp) {
+        this.lamp = lamp;
+        this.connectToLamp = function () {
+            return this.lamp;
+        };
+        this.switchOff = function () {
+            return this.connectToLamp().turnOff();
+        };
+        this.switchOn = function () {
+            return this.connectToLamp().turnOn();
+        };
+    };
+    let ElectricLamp = function () {
+
+        this.turnOff = function () {
+            return "Den da tat";
+        };
+        this.turnOn = function () {
+            return "Den da bat";
+        };
+    };
+
+    let lamp = new ElectricLamp();
+    let sButton = new SwitchButton(lamp);
+
+    sButton.switchOn();
+    sButton.switchOff();
+
+    function turnButtonOn() {
+        alert(sButton.switchOn());
+    }
+    function turnButtonOff() {
+        alert(sButton.switchOff())
+    }
+</script>
+</body>
+</html>
